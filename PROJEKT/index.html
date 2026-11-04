@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <style src="style.css"></style>
+        <title>Helpdesk</title>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <h2>Helpdesk</h2>
@@ -17,17 +17,32 @@
                 <option value="">high</option>
             </select><br>
 
-            <label for="">Filter</label>
-            <select name="" id="">
-                <option value="">all</option>
-                <option value="">new</option>
-                <option value="">doing</option>
-                <option value="">done</option>
+            <label for="Filter">Filter</label>
+            <select name="Filter" id="filterId" onchange="filter()">
+                <option value="all">all</option>
+                <option value="new">new</option>
+                <option value="doing">doing</option>
+                <option value="done">done</option>
             </select><br>
 
             <label for="">Counter visible: " ", all: " "</label><br>
 
-            <ul>
+            <ul id="listId">
+                <li>test1<select>
+                <option value="new">new</option>
+                <option value="doing">doing</option>
+                <option value="done">done</option>
+            </select></li>
+            <li>test2<select>
+                <option value="new">new</option>
+                <option value="doing">doing</option>
+                <option value="done">done</option>
+            </select></li>
+            <li>test3<select>
+                <option value="new">new</option>
+                <option value="doing">doing</option>
+                <option value="done">done</option>
+            </select></li>
                 <p>Nothing to display</p>
             </ul>
         </form>
