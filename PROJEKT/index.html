@@ -3,34 +3,36 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Helpdesk</title>
         <style src="style.css"></style>
     </head>
     <body>
         <h2>Helpdesk</h2>
-        <form action="">
-            <label for="">Title</label><input type="text">
-            <label for="">Priority</label>
-            <select name="" id="">
-                <option value="">low</option>
-                <option value="">medium</option>
-                <option value="">high</option>
+        <form id="Form">
+            <label for="title">Title</label><input id="title" type="text" required>
+            <label for=priority"">Priority</label>
+            <select name="priority" id="priority">
+                <option value="low">low</option>
+                <option value="medium">medium</option>
+                <option value="high">high</option>
             </select><br>
 
-            <label for="">Filter</label>
-            <select name="" id="">
-                <option value="">all</option>
-                <option value="">new</option>
-                <option value="">doing</option>
-                <option value="">done</option>
+           <input type="submit" value="Submit" onclick="addAnime()"></br>
+
+            <label for="filter">Filter</label>
+            <select name="filter" id="filter" >
+                <option value="all">all</option>
+                <option value="new">new</option>
+                <option value="doing">doing</option>
+                <option value="done">done</option>
             </select><br>
 
-            <label for="">Counter visible: " ", all: " "</label><br>
+            <o>Counter visible: " ", all: " "</o><br>
 
-            <ul>
-                <p>Nothing to display</p>
-            </ul>
         </form>
+        <ul id="listOfItems">
+            <p>Nothing to display</p>
+        </ul>
         <script src="app.js" defer></script>
     </body>
 </html>
