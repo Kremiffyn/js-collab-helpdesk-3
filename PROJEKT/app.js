@@ -6,6 +6,7 @@ let idCount = 0;
 
 function addAnime(e){
     if(e) e.preventDefault();
+    if(idCount>100) return;
 
     const titleInput=document.forms["Form"]["title"].value.trim();
     const priorityInput=document.forms["Form"]["priority"].value;
