@@ -49,6 +49,16 @@ function addAnime(e){
     console.log(animes[idCount].priority);
     console.log(animes[idCount].status);
 
+    const listOfAnimeDOM=document.getElementById("listOfItems");
+
+    if(document.getElementById("Nothing")) listOfAnimeDOM.removeChild(document.getElementById("Nothing"));
+
+    const newAnimeItem=document.createElement("li");
+    newAnimeItem.setAttribute
+    newAnimeItem.textContent=animes[idCount].id + " -  " + animes[idCount].title + " - " + animes[idCount].priority + " - " + animes[idCount].status;
+
+    listOfAnimeDOM.appendChild(newAnimeItem);
+
     idCount++;
     
 }

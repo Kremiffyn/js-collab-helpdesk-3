@@ -27,16 +27,24 @@ main button, main select {
 }
 
 input[type=submit],select{
-  width:50px;
+  width:75px;
 }
 
 
-#FilterContainer{
+.FilterContainer{
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-#FormContainer{
+.FormContainer{
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 #content{
   display: flex;
   justify-content: center;
