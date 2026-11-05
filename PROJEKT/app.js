@@ -22,27 +22,6 @@ function addAnime(e){
     animes.push(anime);
 
     console.log(animes);
-    /*
-    SELECT + OPTIONS
-        let select = document.createElement("select");
-        select.setAttribute("type", "text");
-        select.setAttribute("name", "typ");
-        select.setAttribute("id", "typ"+aktualneId);
-        let option1 = document.createElement("option");
-        option1.setAttribute("value", "rec");
-        option1.innerHTML = "Allel recesywny";
-        select.appendChild(option1);
-        let option2 = document.createElement("option");
-        option2.setAttribute("value", "dom");
-        option2.innerHTML = "Allel dominujący";
-        select.appendChild(option2);
-        let p5 = document.createElement("p");
-        p5.setAttribute("id", "t"+aktualneId);
-        p5.setAttribute("class", "hidden");
-
-    PRZYPISANIE DO ELEMENTU
-        cell5.appendChild(select);
-    */
 
     console.log(animes[idCount].id);
     console.log(animes[idCount].title);
@@ -54,8 +33,29 @@ function addAnime(e){
     if(document.getElementById("Nothing")) listOfAnimeDOM.removeChild(document.getElementById("Nothing"));
 
     const newAnimeItem=document.createElement("li");
-    newAnimeItem.setAttribute
-    newAnimeItem.textContent=animes[idCount].id + " -  " + animes[idCount].title + " - " + animes[idCount].priority + " - " + animes[idCount].status;
+
+    const select=document.createElement("select");
+    select.setAttribute("type", "text");
+    select.setAttribute("name", animes[idCount].status);
+    select.setAttribute("id", animes[idCount].status+animes[idCount].id);
+
+    let option1 = document.createElement("option");
+    option1.setAttribute("value", filters[0]);
+    option1.innerHTML = filters[0];
+    select.appendChild(option1);
+
+    let option2 = document.createElement("option");
+    option2.setAttribute("value", filters[1]);
+    option2.innerHTML = filters[1];
+    select.appendChild(option2);
+
+    let option3 = document.createElement("option");
+    option3.setAttribute("value", filters[2]);
+    option3.innerHTML = filters[2];
+    select.appendChild(option3);
+
+    newAnimeItem.textContent=animes[idCount].id + " -  " + animes[idCount].title + " - " + animes[idCount].priority + " - ";
+    newAnimeItem.appendChild(select);
 
     listOfAnimeDOM.appendChild(newAnimeItem);
 
@@ -65,7 +65,7 @@ function addAnime(e){
 
 function filter() {
     const filterSelect = document.getElementById("filterId");
-    const listItems = document.querySelectorAll("#listId li");
+    const listItems = document.querySelectorAll("#listOfItems li");
     listItems.forEach(item => {
         const itemSelect = item.querySelector("select");
         switch (filterSelect.value) {
