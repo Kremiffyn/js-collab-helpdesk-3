@@ -22,6 +22,27 @@ function addAnime(e){
     animes.push(anime);
 
     console.log(animes);
+    /*
+    SELECT + OPTIONS
+        let select = document.createElement("select");
+        select.setAttribute("type", "text");
+        select.setAttribute("name", "typ");
+        select.setAttribute("id", "typ"+aktualneId);
+        let option1 = document.createElement("option");
+        option1.setAttribute("value", "rec");
+        option1.innerHTML = "Allel recesywny";
+        select.appendChild(option1);
+        let option2 = document.createElement("option");
+        option2.setAttribute("value", "dom");
+        option2.innerHTML = "Allel dominujący";
+        select.appendChild(option2);
+        let p5 = document.createElement("p");
+        p5.setAttribute("id", "t"+aktualneId);
+        p5.setAttribute("class", "hidden");
+
+    PRZYPISANIE DO ELEMENTU
+        cell5.appendChild(select);
+    */
 
     console.log(animes[idCount].id);
     console.log(animes[idCount].title);
