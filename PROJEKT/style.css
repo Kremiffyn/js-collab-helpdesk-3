@@ -26,18 +26,32 @@ main button, main select {
   background-color: #fdf3f0;
 }
 
-form{
+input[type=submit],select{
+  width:50px;
+}
+
+
+#FilterContainer{
+  width: 100%;
+}
+#FormContainer{
+  width: 100%;
+}
+#content{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+form{
   margin-bottom: 10px;
+}
+
+form *{
+  margin:5px;
 }
 
 main button {
   padding: 3px 10px 3px 10px;
 }
 
-#content {
-  display: flex;
-  min-height: 95vh;
-}

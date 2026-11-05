@@ -21,8 +21,6 @@ function addAnime(e){
 
     animes.push(anime);
 
-    console.log(animes);
-
     console.log(animes[idCount].id);
     console.log(animes[idCount].title);
     console.log(animes[idCount].priority);
