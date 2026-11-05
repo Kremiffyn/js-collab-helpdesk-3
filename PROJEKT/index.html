@@ -7,33 +7,36 @@
         <style rel="stylesheet" src="style.css"></style>
     </head>
     <body>
-        <h2>Helpdesk</h2>
-        <form name="Form" id="Form" method="post" onsubmit="addAnime(event)">
-            
-            <label for="title">Title</label><input name="title" id="title" type="text" required>
-            <label for="priority">Priority</label>
-            <select name="priority" id="priority">
-                <option value="low">low</option>
-                <option value="medium">medium</option>
-                <option value="high">high</option>
+        <main>
+            <h2>Helpdesk</h2>
+            <form name="Form" id="Form" method="post" onsubmit="addAnime(event)">
+                
+                <label for="title">Title</label><input name="title" id="title" type="text" required>
+                <label for="priority">Priority</label>
+                <select name="priority" id="priority">
+                    <option value="low">low</option>
+                    <option value="medium">medium</option>
+                    <option value="high">high</option>
+                </select><br>
+
+            <input type="submit" value="Submit"></br>
+
+            </form>
+
+            <label for="Filter">Filter</label>
+            <select name="Filter" id="filterId" onchange="filter()">
+                <option value="all">all</option>
+                <option value="new">new</option>
+                <option value="doing">doing</option>
+                <option value="done">done</option>
             </select><br>
 
-           <input type="submit" value="Submit"></br>
-
-        </form>
-
-        <label for="Filter">Filter</label>
-        <select name="Filter" id="filterId" onchange="filter()">
-            <option value="all">all</option>
-            <option value="new">new</option>
-            <option value="doing">doing</option>
-            <option value="done">done</option>
-        </select><br>
-
-        <o>Counter visible: " ", all: " "</o><br>
-        <ul id="listOfItems">
-            <p>Nothing to display</p>
-        </ul>
+            <o>Counter visible: " ", all: " "</o><br>
+            <ul id="listOfItems">
+                <p>Nothing to display</p>
+            </ul>
+        </main>
+        
         <script src="app.js" defer></script>
     </body>
 </html>
