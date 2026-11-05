@@ -4,11 +4,27 @@ const filters=['new','doing','done'];
 let animes = [];
 let idCount = 0;
 
+function changeId(){
+    const items=document.querySelectorAll('#listItem');
+    for(let item of items){
+        const selectItem=item.querySelector("select");
+        const animeId = parseInt(item.className);
+        const animeObj = animes.find(a => a.id === animeId);
+        if (animeObj && selectItem) {
+            animeObj.status = selectItem.value;
+        }
+    }
+}
+
 function addAnime(e){
     if(e) e.preventDefault();
-    if(idCount>100) return;
+    if(idCount>1000) return;
 
     const titleInput=document.forms["Form"]["title"].value.trim();
+    if(titleInput.length<3 || titleInput.length>80){
+        alert("Źle wpisane dane.");
+        return;
+    }
     const priorityInput=document.forms["Form"]["priority"].value;
 
 
@@ -54,8 +70,18 @@ function addAnime(e){
     option3.innerHTML = filters[2];
     select.appendChild(option3);
 
-    newAnimeItem.textContent=animes[idCount].id + " -  " + animes[idCount].title + " - " + animes[idCount].priority + " - ";
+    const idNow=animes[idCount].id;
+    select.setAttribute("onchange",'changeId()');
+
+    newAnimeItem.textContent=animes[idCount].id + " -  " + animes[idCount].title + " - ";
+    const priorityObj=document.createElement("b");
+    priorityObj.innerText=animes[idCount].priority + " - "
+
+    newAnimeItem.appendChild(priorityObj);
     newAnimeItem.appendChild(select);
+
+    newAnimeItem.setAttribute("class",animes[idCount].id);
+    newAnimeItem.setAttribute("id","listItem");
 
     listOfAnimeDOM.appendChild(newAnimeItem);
 
@@ -64,9 +90,13 @@ function addAnime(e){
 }
 
 function filter() {
+    const listOfAnimeDOM=document.getElementById("listOfItems");
+    if(document.getElementById("Nothing")) listOfAnimeDOM.removeChild(document.getElementById("Nothing"));
+
     const filterSelect = document.getElementById("filterId");
     const listItems = document.querySelectorAll("#listOfItems li");
-    listItems.forEach(item => {
+    if(animes.length!=0){
+        listItems.forEach(item => {
         const itemSelect = item.querySelector("select");
         switch (filterSelect.value) {
             case "all":
@@ -101,4 +131,20 @@ function filter() {
                 break;
         }
     });
+    }
+    
+    const counterOfItems=document.getElementById("counter");
+    let counterOfVisibleItems=document.querySelectorAll("#listOfItems li:not(.hidden)").length;
+    if(document.getElementById("Nothing")) counterOfVisibleItems--;
+    counterOfItems.innerText = `Counter visible: ${counterOfVisibleItems}, all: ${animes.length}`;
+    if(counterOfVisibleItems==0){
+        const nothingItem=document.createElement("li");
+        nothingItem.setAttribute("id","Nothing");
+        nothingItem.innerText="Nothing to display";
+        listOfAnimeDOM.appendChild(nothingItem);
+    }
 }
+
+
+const isThereFox = document.getElementById("lis.");
+if(!isThereFox || !isThereFox.hasAttribute("src") || isThereFox.getAttribute("src") != "lis.jpeg") document.querySelector("body").innerHTML="<p>Oddawaj lisa >:(</p>";
