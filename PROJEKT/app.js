@@ -1,6 +1,10 @@
 
 const filters=['new','doing','done'];
 
+document.getElementById("title").value="";
+document.getElementById("priority").value="low";
+document.getElementById("filterId").value="all";
+
 let animes = [];
 let idCount = 0;
 
@@ -18,7 +22,7 @@ function changeId(){
 
 function addAnime(e){
     if(e) e.preventDefault();
-    if(idCount>1000) return;
+    if(idCount>=1000) return;
 
     const titleInput=document.forms["Form"]["title"].value.trim();
     if(titleInput.length<3 || titleInput.length>80){
@@ -70,7 +74,6 @@ function addAnime(e){
     option3.innerHTML = filters[2];
     select.appendChild(option3);
 
-    const idNow=animes[idCount].id;
     select.setAttribute("onchange",'changeId()');
 
     newAnimeItem.textContent=animes[idCount].id + " -  " + animes[idCount].title + " - ";
