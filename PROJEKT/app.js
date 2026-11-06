@@ -96,19 +96,46 @@ function filter(e) {
     const listOfAnimeDOM=document.getElementById("listOfItems");
     if(document.getElementById("Nothing")) listOfAnimeDOM.removeChild(document.getElementById("Nothing"));
 
-    const filterSelect = document.getElementById("filterId");
-    const listItems = document.querySelectorAll("#listOfItems li");
-    const status = filterSelect.value;
+    const status = document.getElementById("filterId").value;
+    const filteredAnimes = animes.filter(anime => {
+        return status === "all" || anime.status === status;
+    });
 
-    listItems.forEach(item => {
-        const animeId = parseInt(item.className);
-        const anime = animes.find(a => a.id === animeId);
+    listOfAnimeDOM.innerHTML = "";
 
-        if (!anime) return;
+    filteredAnimes.forEach(anime => {
+        const newAnimeItem = document.createElement("li");
 
-        const isVisible = status === "all" || anime.status === status;
+        const select = document.createElement("select");
+        select.setAttribute("name", anime.status);
+        select.setAttribute("id", anime.status + anime.id);
 
-        item.classList.toggle("hidden", !isVisible);
+        filters.forEach(filterStatus => {
+            const option = document.createElement("option");
+            option.value = filterStatus;
+            option.innerText = filterStatus;
+
+            if (anime.status === filterStatus) {
+                option.selected = true;
+            }
+
+            select.appendChild(option);
+        });
+
+        select.setAttribute("onchange", "changeId()");
+
+        newAnimeItem.textContent = anime.id + " - " + anime.title + " - ";
+
+        const priorityObj = document.createElement("b");
+        priorityObj.innerText = anime.priority + " - ";
+
+        newAnimeItem.appendChild(priorityObj);
+        newAnimeItem.appendChild(select);
+
+        newAnimeItem.setAttribute("class", anime.id);
+        newAnimeItem.setAttribute("id", "listItem");
+
+        listOfAnimeDOM.appendChild(newAnimeItem);
     });
 
     const counterOfItems=document.getElementById("counter");
