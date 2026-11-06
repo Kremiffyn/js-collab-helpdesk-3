@@ -88,54 +88,28 @@ function addAnime(e){
     idCount++;
     
 }
-
-function filter() {
+function filter(e) {
+    if(e) e.preventDefault();
     const listOfAnimeDOM=document.getElementById("listOfItems");
     if(document.getElementById("Nothing")) listOfAnimeDOM.removeChild(document.getElementById("Nothing"));
 
     const filterSelect = document.getElementById("filterId");
     const listItems = document.querySelectorAll("#listOfItems li");
-    if(animes.length!=0){
-        listItems.forEach(item => {
-        const itemSelect = item.querySelector("select");
-        switch (filterSelect.value) {
-            case "all":
-                item.classList.remove("hidden");
-                break;
+    const status = filterSelect.value;
 
-            case "new":
-                if(itemSelect.value != "new") {
-                    item.classList.add("hidden");
-                } else {
-                    item.classList.remove("hidden");
-                }
-                break;
+    listItems.forEach(item => {
+        const animeId = parseInt(item.className);
+        const anime = animes.find(a => a.id === animeId);
 
-            case "doing":
-                if(itemSelect.value != "doing") {
-                    item.classList.add("hidden");
-                } else {
-                    item.classList.remove("hidden");
-                }
-                break;
+        if (!anime) return;
 
-            case "done":
-                if(itemSelect.value != "done") {
-                    item.classList.add("hidden");
-                } else {
-                    item.classList.remove("hidden");
-                }
-                break;
-        
-            default:
-                break;
-        }
+        const isVisible = status === "all" || anime.status === status;
+
+        item.classList.toggle("hidden", !isVisible);
     });
-    }
-    
+
     const counterOfItems=document.getElementById("counter");
     let counterOfVisibleItems=document.querySelectorAll("#listOfItems li:not(.hidden)").length;
-    if(document.getElementById("Nothing")) counterOfVisibleItems--;
     counterOfItems.innerText = `Counter visible: ${counterOfVisibleItems}, all: ${animes.length}`;
     if(counterOfVisibleItems==0){
         const nothingItem=document.createElement("li");
@@ -144,7 +118,6 @@ function filter() {
         listOfAnimeDOM.appendChild(nothingItem);
     }
 }
-
 
 const isThereFox = document.getElementById("lis.");
 if(!isThereFox || !isThereFox.hasAttribute("src") || isThereFox.getAttribute("src") != "lis.jpeg") document.querySelector("body").innerHTML="<p>Oddawaj lisa >:(</p>";
